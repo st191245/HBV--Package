@@ -443,7 +443,13 @@ The range (difference between max and min) of the discharge volumes is logged fo
         self.data_hbv["Discharge_Vol_simulated"] = discharge_volume_simulated
         action_logger.info(f"Range of discharge volume calculated: {np.ptp(discharge_volume_simulated)}")
 ```
-
+The following  code saves the final pandas DataFrame (self.data_hbv) to an Excel file named "Data_with_discharge_simulated_output.xlsx" using the to_excel() method. 
+The index=False parameter ensures that the DataFrame's index is not included in the file. After saving, it prints a confirmation message to inform the user that the file has been successfully created. 
+```python
+        output_file = "Data_with_discharge_simulated_output.xlsx" 
+        self.data_hbv.to_excel(output_file, index=False)  
+        print(f"DataFrame with discharge volume has been saved to {output_file}")
+```
 
 
 ## 5.visualization.py
