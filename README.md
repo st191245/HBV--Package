@@ -224,6 +224,17 @@ This `error_logger.error(f"An unexpected error occurred while loading data: {str
             error_logger.error(f"An unexpected error occurred while loading data: {str(e)}")
             raise
 ```
+The following code block defines a function named drop_missing_data(),that removes rows with any missing values from the DataFrame.If the rows are sucessfully dropped,it will log a message.If any error occurs during the process it will log an error message.
+the df.dropna() pandas function is used to drop the missing data from the Dataframe and inplace=True parameter is used to modify the DataFrame directly,and the dataframe data_hbv is updated by removing rows with missing values.
+```python
+    def drop_missing_data(self):
+        
+        try:
+            self.data_hbv.dropna(inplace=True)
+            action_logger.info("Dropped missing data successfully.")
+        except Exception as e:
+            error_logger.error(f"An unexpected error occurred while dropping missing data: {str(e)}")
+```
 The Snow class is initialized with the following parameters:
 ```python
 class Snow(DataReader):
