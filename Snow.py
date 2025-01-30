@@ -30,6 +30,16 @@ class DataReader:
         except Exception as e:
             error_logger.error(f"An unexpected error occurred while loading data: {str(e)}")
             raise
+      def drop_missing_data(self):
+        """
+        Drops rows with any missing values from the DataFrame.
+        :return: None -as already dataframe is modified in place
+        """
+        try:
+            self.data_hbv.dropna(inplace=True)
+            action_logger.info("Dropped missing data successfully.")
+        except Exception as e:
+            error_logger.error(f"An unexpected error occurred while dropping missing data: {str(e)}")       
 
 class Snow(DataReader):
     """
